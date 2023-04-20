@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Product_List from './components/Product_List'
-import Header from './components/Header'
-import Modal from './components/Modal'
+import Product_List from './Components/Product_List'
+import Header from './Components/Header'
+import Modal from './Components/Modal'
 import {useAuth} from './Context/authContext'
 
 function App() {
@@ -14,11 +14,11 @@ function App() {
         <Product_List/>    
         {
           auth.showLogin &&
-        <Modal closeModal={()=>auth.setShowLogin(false)} window_width={'400px'}>
+        <Modal closeModal={()=>auth.setShowLogin(false)} window_width={'350px'}>
           <div className="col signin">
             <h1>Sign In</h1>
-            <input type="text" />
-            <input type="password" />
+            <input type="text" placeholder='Username' />
+            <input type="password" placeholder='Password'/>
             <button className="btn1">Sign In</button>
           </div>
         </Modal>  
