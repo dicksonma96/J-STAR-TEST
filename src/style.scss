@@ -92,13 +92,53 @@ select {
   max-width: 1000px;
   margin-bottom: 20px;
   align-items: center;
-  .greeting {
-    color: white;
-    font-size: 20px;
+  .logo{
+    width:25vmin;
+    max-width:200px;
+    margin-right:auto;
+  }
+  .user_info {    
     margin-right: 10px;
+    position:relative;
+    .username{
+      color: white;
+      background:#2e2e2e;
+      padding:10px;
+      border-radius: 10px;
+      align-items: center;
+      width:100px;
+      font-size: 8px;
+      cursor:pointer;
+      span{
+        flex:1;
+        text-align: center;
+        margin-right:5px;
+        font-size: 14px;
+      }
+    }
+    .col{
+      background:#2e2e2e;
+      padding:5px;      
+      position:absolute;
+      right:0;
+      top:100%;
+      margin-top:5px;
+      border-radius: 10px;
+      button{
+        white-space: nowrap;
+        text-align: right;
+        background: none;
+        border:none;
+        color:white;
+        padding:5px;
+        border-radius: 10px;
+        &:hover{
+          background: rgba(255,255,255,0.1);
+        }
+      }
+    }
   }
   .cart_btn {
-    margin-left: auto;
     width: 100px;
     margin-right: 10px;
   }
@@ -139,7 +179,7 @@ select {
     .product {
       background-color: #171717;
       color: white;
-      padding: 25px;
+      padding:15px 25px;
       border-radius: 20px;
       cursor: pointer;
       transition: 0.2s;
@@ -147,6 +187,15 @@ select {
       &:hover {
         transform: scale(1.05);
       }
+
+      em{
+        font-size: 12px;
+        margin-bottom: 5px;
+        color:grey;
+        padding-left:10px;
+        text-transform: capitalize;
+      }
+
       img {
         width: 100%;
         border-radius: 20px;
@@ -191,6 +240,7 @@ select {
       padding: 20px;
       background-color: #2e2e2e;
       font-size: 13px;
+      border-radius: 20px;
     }
 
     .modal_product {
@@ -249,5 +299,17 @@ select {
     max-width: 800px;
     min-height: 200px;
     border-radius: 10px;
+    position:relative;
+
+    .close_btn{
+      position:absolute;
+      top:-25px;
+      right:0px;
+      color:grey;
+      cursor:pointer;
+      &:hover{
+        color:white;
+      }
+    }
   }
 }

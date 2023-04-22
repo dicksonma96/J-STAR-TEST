@@ -10,13 +10,7 @@ export function AuthProvider(props) {
   const [userInfo, setUserInfo] = useState(null);  
   const [showLogin, setShowLogin] = useState(false);
 
-  const set_user_info =(info) =>{
-    // if(info == null){
-
-    // }
-    // else{
-
-    // }
+  const set_user_info =(info) =>{    
     setUserInfo(info)
   }
   const set_show_login =(bool) =>{
