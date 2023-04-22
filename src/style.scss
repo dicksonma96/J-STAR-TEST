@@ -37,6 +37,7 @@ select {
   align-items: center;
   width: 100%;
   padding: 20px;
+  height: 100vh;
 }
 
 .btn1 {
@@ -92,48 +93,55 @@ select {
   max-width: 1000px;
   margin-bottom: 20px;
   align-items: center;
-  .logo{
-    width:25vmin;
-    max-width:200px;
-    margin-right:auto;
+  .logo {
+    width: 25vmin;
+    max-width: 200px;
+    margin-right: auto;
   }
-  .user_info {    
+  .user_info {
     margin-right: 10px;
-    position:relative;
-    .username{
+    position: relative;
+    .username {
       color: white;
-      background:#2e2e2e;
-      padding:10px;
+      background: #2e2e2e;
+      padding: 10px;
       border-radius: 10px;
       align-items: center;
-      width:100px;
-      font-size: 8px;
-      cursor:pointer;
-      span{
-        flex:1;
+      width: 100px;
+      cursor: pointer;
+      span {
+        flex: 1;
         text-align: center;
-        margin-right:5px;
+        margin-right: 5px;
         font-size: 14px;
       }
+      .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+
+        border-top: 5px solid white;
+      }
     }
-    .col{
-      background:#2e2e2e;
-      padding:5px;      
-      position:absolute;
-      right:0;
-      top:100%;
-      margin-top:5px;
+    .col {
+      background: #2e2e2e;
+      padding: 5px;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      margin-top: 5px;
       border-radius: 10px;
-      button{
+      button {
         white-space: nowrap;
         text-align: right;
         background: none;
-        border:none;
-        color:white;
-        padding:5px;
+        border: none;
+        color: white;
+        padding: 10px;
         border-radius: 10px;
-        &:hover{
-          background: rgba(255,255,255,0.1);
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
         }
       }
     }
@@ -150,6 +158,7 @@ select {
   width: 100%;
   max-width: 1000px;
   border-radius: 20px;
+  height: 90vh;
 
   .filter_section {
     width: 100%;
@@ -170,6 +179,11 @@ select {
     }
   }
 
+  .productScroll {
+    flex: 1;
+    overflow: auto;
+  }
+
   .productList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -179,20 +193,20 @@ select {
     .product {
       background-color: #171717;
       color: white;
-      padding:15px 25px;
+      padding: 15px 25px;
       border-radius: 20px;
       cursor: pointer;
       transition: 0.2s;
 
       &:hover {
-        transform: scale(1.05);
+        background-color: #1b1b1b;
       }
 
-      em{
+      em {
         font-size: 12px;
         margin-bottom: 5px;
-        color:grey;
-        padding-left:10px;
+        color: grey;
+        padding-left: 10px;
         text-transform: capitalize;
       }
 
@@ -281,6 +295,78 @@ select {
   }
 }
 
+.mycart {
+  padding: 20px;
+
+  .cartscroll {
+    height: 300px;
+    overflow: auto;
+  }
+
+  .cartList {
+    .cart_item {
+      padding: 15px;
+      background-color: #171717;
+      color: white;
+      border-radius: 10px;
+      margin: 10px 0;
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+
+      .info {
+        flex: 1;
+        margin-right: 15px;
+        font-size: 13px;
+        h5 {
+          font-size: 13px;
+        }
+      }
+      .remove_btn {
+        align-self: center;
+      }
+    }
+  }
+
+  .empty_cart {
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+
+  .order_btn {
+    margin-top: 20px;
+    span {
+      margin-left: auto;
+    }
+  }
+}
+
+.counter {
+  margin-top: auto;
+  input {
+    background-color: white;
+    width: 50px;
+    border-radius: 0;
+    font-size: 20px;
+    color: black;
+    padding: 0;
+    text-align: center;
+    border: solid 1px rgb(220, 220, 220);
+  }
+  button {
+    border: none;
+    padding: 5px 10px;
+    font-size: 15px;
+    border: solid 1px rgb(220, 220, 220);
+  }
+}
+
 .modal_overlay {
   position: fixed;
   left: 0;
@@ -299,16 +385,16 @@ select {
     max-width: 800px;
     min-height: 200px;
     border-radius: 10px;
-    position:relative;
+    position: relative;
 
-    .close_btn{
-      position:absolute;
-      top:-25px;
-      right:0px;
-      color:grey;
-      cursor:pointer;
-      &:hover{
-        color:white;
+    .close_btn {
+      position: absolute;
+      top: -25px;
+      right: 0px;
+      color: grey;
+      cursor: pointer;
+      &:hover {
+        color: white;
       }
     }
   }

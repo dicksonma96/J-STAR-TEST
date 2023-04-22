@@ -17,7 +17,7 @@ function Product_List() {
   const getProducts = async () =>{
     try{
         setLoading(true);
-        const data = await fetch(`https://fakestoreapi.com/products/?limit=${offset * 9}`).then(res=>res.json())
+        const data = await fetch(`https://fakestoreapi.com/products/?limit=${offset * 12}`).then(res=>res.json())
         setList(data);
         setDisplayList(data);
     }
@@ -47,36 +47,40 @@ function Product_List() {
             </div>
             <button className="filter_btn btn1">Filter</button>
         </div>
-        
-         <div className="productList">
-            {!loading && <>
 
-                { displayList.length == 0 && <span className="not_found">Product not found :（ </span>} 
+        <div className="productScroll">
+            <div className="productList">
+                {!loading && <>
 
-                {displayList?.map((product,index)=>{
-                    return(<Product key={index} product={product} />)
-                })}
+                    { displayList.length == 0 && <span className="not_found">Product not found :（ </span>} 
+
+                    {displayList?.map((product,index)=>{
+                        return(<Product key={index} product={product} />)
+                    })}
+                    
+
+                </>
+                }
+
+                {
+                    loading &&
+                    <>
+                        <div className="skeleton"></div>
+                        <div className="skeleton"></div>
+                        <div className="skeleton"></div>
+                        <div className="skeleton"></div>
+                        <div className="skeleton"></div>
+                        <div className="skeleton"></div>
+                    </>
+                }
+
                 
 
-            </>
-            }
 
-            {
-                loading &&
-                <>
-                    <div className="skeleton"></div>
-                    <div className="skeleton"></div>
-                    <div className="skeleton"></div>
-                    <div className="skeleton"></div>
-                    <div className="skeleton"></div>
-                    <div className="skeleton"></div>
-                </>
-            }
+            </div>
+        </div>   
 
-            
-
-
-        </div>
+        
     </div>
    
   )
