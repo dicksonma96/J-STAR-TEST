@@ -31,6 +31,25 @@ select {
   border-radius: 10px;
 }
 
+.range_input {
+  align-items: center;
+  background-color: #171717;
+  border-radius: 10px;
+  padding: 0px 10px;
+  font-size: 12px;
+  strong {
+    color: white;
+  }
+  span {
+    margin-right: 5px;
+    font-size: 10px;
+    color: grey;
+  }
+  input {
+    margin: 0 5px;
+  }
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -50,6 +69,11 @@ select {
   cursor: pointer;
   &:hover {
     filter: brightness(1.5);
+  }
+
+  &:disabled {
+    filter: grayscale(1);
+    cursor: no-drop;
   }
 }
 .btn2 {
@@ -93,6 +117,7 @@ select {
   max-width: 1000px;
   margin-bottom: 20px;
   align-items: center;
+  z-index: 10;
   .logo {
     width: 25vmin;
     max-width: 200px;
@@ -152,30 +177,79 @@ select {
   }
 }
 
+.banner {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1000px;
+  .banner_loading {
+    height: 200px;
+  }
+  .bannerImg {
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
 .products {
   background-color: #232323;
   padding: 20px;
   width: 100%;
   max-width: 1000px;
   border-radius: 20px;
-  height: 90vh;
 
-  .filter_section {
-    width: 100%;
+  .filter_panel {
     margin-bottom: 30px;
 
-    .search {
-      flex: 1;
-      max-width: 250px;
-      margin-right: 10px;
-      input {
+    .filter_row {
+      width: 100%;
+      margin-top: 15px;
+
+      .search {
+        flex: 1;
+        margin-right: 10px;
+        input {
+          width: 100%;
+        }
+      }
+
+      .filter_btn {
+        margin-left: auto;
+        width: 100px;
+      }
+
+      .tags {
+        flex-wrap: wrap;
+        gap: 5px;
         width: 100%;
+        .tag {
+          color: rgb(100, 100, 100);
+          border: solid 1px rgb(100, 100, 100);
+          padding: 10px 15px;
+          border-radius: 10px;
+          cursor: pointer;
+          font-size: 12px;
+          text-transform: capitalize;
+          &:hover {
+            filter: brightness(1.2);
+          }
+        }
+        .selected_tag {
+          background-color: $accent1;
+          color: white;
+          border: none;
+        }
       }
     }
-
-    .filter_btn {
-      margin-left: auto;
-      width: 100px;
+    .range {
+      flex-wrap: wrap;
+      gap: 10px;
+      .range_input {
+        flex: 1;
+        max-width: 300px;
+        input {
+          flex: 1;
+        }
+      }
     }
   }
 
@@ -297,6 +371,19 @@ select {
 
 .mycart {
   padding: 20px;
+  .empty_cart {
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+
+  .order_btn {
+    margin-top: 20px;
+    span {
+      margin-left: auto;
+    }
+  }
 
   .cartscroll {
     height: 300px;
@@ -325,24 +412,14 @@ select {
         h5 {
           font-size: 13px;
         }
+        .status {
+          margin-top: auto;
+          color: greenyellow;
+        }
       }
       .remove_btn {
         align-self: center;
       }
-    }
-  }
-
-  .empty_cart {
-    color: grey;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  }
-
-  .order_btn {
-    margin-top: 20px;
-    span {
-      margin-left: auto;
     }
   }
 }
@@ -357,13 +434,15 @@ select {
     color: black;
     padding: 0;
     text-align: center;
-    border: solid 1px rgb(220, 220, 220);
+    border: none;
   }
   button {
     border: none;
     padding: 5px 10px;
     font-size: 15px;
-    border: solid 1px rgb(220, 220, 220);
+    &:disabled {
+      background: rgb(160, 160, 160);
+    }
   }
 }
 
@@ -378,6 +457,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(5px);
 
   .modal {
     background-color: #232323;
@@ -396,6 +476,50 @@ select {
       &:hover {
         color: white;
       }
+    }
+  }
+}
+
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+
+  .lds-dual-ring {
+    background-color: #171717;
+    width: 200px;
+    height: 200px;
+    border-radius: 50px;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

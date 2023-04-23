@@ -9,9 +9,20 @@ function Product({product}) {
     
     const addToCart = () =>{
         if(auth.userInfo != null){
+            let new_cart = auth.userInfo.cart.map(item=>{
+                if(product.id == item.id){
+                   item.unit += 1
+                }
+                return  item
+            })
+
+            if(!new_cart.some(item=> item.id == product.id)){
+                new_cart.push({...product, unit:1})
+            }
+
             auth.setUserInfo({
                 ...auth.userInfo,
-                cart:[...auth.userInfo.cart, {...product,unit:1}]
+                cart:[...new_cart]
             })
         }
         else{
@@ -19,6 +30,7 @@ function Product({product}) {
         }
         setOpenModal(false);
     }
+  
 
     return (
     <>

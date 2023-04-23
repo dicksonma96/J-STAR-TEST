@@ -65,6 +65,14 @@ function MyCart() {
         return sum.toFixed(2);
     }
 
+    const makeOrder = ()=>{
+        user.setUserInfo({
+            ...user.userInfo,
+            cart:[],
+            order:[...user.userInfo.order, ...user.userInfo.cart]
+        })
+    }
+
     return (
         <>
             <div className="col mycart">
@@ -80,12 +88,14 @@ function MyCart() {
                         }
                     </div>
                 </div>
-                <button className="btn1 order_btn row">Place Order
+                <button className="btn1 order_btn row" 
+                disabled={user.userInfo.cart.length <= 0}
+                onClick={makeOrder}
+                >
+                Place Order
                 <span>Total Price: {getTotalPrice()}</span>
                 </button>
-            </div>
-            
-            
+            </div>            
         </>
     
   )

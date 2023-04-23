@@ -3,11 +3,13 @@ import { useAuth } from '../Context/authContext'
 import logo from '../images/logo.png'
 import Modal from './Modal';
 import MyCart from './MyCart';
+import MyOrder from './MyOrder';
 
 function Header() {
  const user = useAuth();
  const [showDropdown, setShowDropdown] = useState(false);
  const [showCart, setShowCart] = useState(false);
+ const [showOrder, setShowOrder] = useState(false);
  const dropdownRef = useRef();
 
    const handleSignIn = () =>{
@@ -36,7 +38,9 @@ function Header() {
               <div className="username row" onClick={()=>setShowDropdown(!showDropdown)}><span>{user.userInfo?.username} </span> <div className="arrow-down"></div></div>
               {showDropdown &&
                 <div className="col" ref={dropdownRef}>
-                  <button>Order History</button>
+                  <button onClick={()=>setShowOrder(true)}>
+                    My Order {`[${user.userInfo.order.length}]`}
+                    </button>
                   <button onClick={()=>{
                     user.setUserInfo(null);
                     setShowDropdown(false);
@@ -72,6 +76,14 @@ function Header() {
         <MyCart />
       </Modal>
      }   
+
+     {
+      showOrder
+      &&
+      <Modal closeModal={()=>setShowOrder(false)} window_width={'500px'}>
+        <MyOrder />
+      </Modal>
+     }
 
     </>
   )

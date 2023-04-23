@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react'
 import Product from './Product'
+import FilterPanel from './FilterPanel'
 
 function Product_List() {
 
@@ -8,7 +9,7 @@ function Product_List() {
   const [displayList, setDisplayList] = useState([]);
   const [loading,setLoading] = useState(false);
   const [offset,setOffset] = useState(1);
-
+    
 
   useEffect(()=>{
     getProducts()
@@ -28,25 +29,11 @@ function Product_List() {
         setLoading(false);
     }
   }      
-   
-  const handleSearch = (e)=>{
-    const filteredProduct = list.filter((product)=>{
-        if(product.title.toLowerCase().includes(e.target.value) || product.description.toLowerCase().includes(e.target.value))
-        return product
-    })
-    setDisplayList(filteredProduct);
-  }
-
 
   return (
     <div className="products col">
-
-        <div className="row filter_section">
-            <div className="search row">
-                <input type="text" onChange={handleSearch} placeholder='Search you products...'/>
-            </div>
-            <button className="filter_btn btn1">Filter</button>
-        </div>
+           
+        <FilterPanel categories={[...new Set(list.map((item)=>item.category))]} input={list} output={(arr)=>setDisplayList(arr)}/>
 
         <div className="productScroll">
             <div className="productList">
@@ -79,7 +66,6 @@ function Product_List() {
 
             </div>
         </div>   
-
         
     </div>
    
