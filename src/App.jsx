@@ -35,7 +35,7 @@ function App() {
     <>
         <Header/>
         <Banner />
-        <Product_List/>    
+        <Product_List />    
         
         {
           auth.showLogin &&
