@@ -1,11 +1,14 @@
 import React,{useEffect, useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination} from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
+
+
 
 function Banner() {
     const [loading,setLoading] = useState(false);
@@ -46,12 +49,13 @@ function Banner() {
             <div className="skeleton banner_loading row"></div>
             :
             <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination,Autoplay ]}
                 spaceBetween={0}
                 slidesPerView={1}
                 onSwiper={(swiper) => console.log(swiper)}
                 pagination={{ clickable: true }}
                 navigation
+                autoplay 
                 >
                     {banners.map((banner,index)=>(
                          <SwiperSlide key={index}>
