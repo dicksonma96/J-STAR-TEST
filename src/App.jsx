@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Product_List from './Components/Product_List'
 import Header from './Components/Header'
 import Banner from './Components/Banner'
 import Modal from './Components/Modal'
 import Loader from './Components/Loader'
+import Reset from './Components/Reset'
 import {useAuth} from './Context/authContext'
 import {signIn} from './Tools/SignInPromise'
 
@@ -15,6 +16,13 @@ function App() {
     password:''
   })
   const [loginLoading, setLoginLoading] = useState(false);
+
+  useEffect(()=>{
+    let userinfo = sessionStorage.getItem('userSession');
+    if(userinfo){
+      auth.setUserInfo(JSON.parse(userinfo))
+    }
+  },[])
 
   const handleLogin = async () =>{
     try{
@@ -36,7 +44,7 @@ function App() {
         <Header/>
         <Banner />
         <Product_List />    
-        
+        <Reset />
         {
           auth.showLogin &&
         <Modal closeModal={()=>auth.setShowLogin(false)} window_width={'350px'}>

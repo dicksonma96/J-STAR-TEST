@@ -43,6 +43,7 @@ function Header() {
                     </button>
                   <button onClick={()=>{
                     user.setUserInfo(null);
+                    sessionStorage.removeItem('userSession');
                     setShowDropdown(false);
                     }}>Sign Out</button> 
                 </div>

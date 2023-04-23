@@ -9,6 +9,7 @@ export const signIn = async (username, password) => {
       if (foundUser != undefined) {
         if (foundUser.password == password) {
           resolve({ msg: "Success", data: foundUser });
+          sessionStorage.setItem("userSession", JSON.stringify(foundUser));
         } else {
           reject({ msg: "Incorrect Password" });
         }

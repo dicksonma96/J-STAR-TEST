@@ -523,3 +523,15 @@ select {
     }
   }
 }
+
+.reset_btn {
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+  background-color: rgb(117, 22, 22);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+}

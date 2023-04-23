@@ -3,13 +3,11 @@ import Product from './Product'
 import FilterPanel from './FilterPanel'
 
 function Product_List() {
-
-    
+   
   const [list,setList] = useState([])
   const [displayList, setDisplayList] = useState([]);
   const [loading,setLoading] = useState(false);
-  const [offset,setOffset] = useState(1);
-    
+  const [offset,setOffset] = useState(1);    
 
   useEffect(()=>{
     getProducts()

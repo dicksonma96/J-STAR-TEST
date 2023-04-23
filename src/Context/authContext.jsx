@@ -23,6 +23,9 @@ export function AuthProvider(props) {
   const set_show_login =(bool) =>{
     setShowLogin(bool)
   }
+  const set_loading = (bool)=>{
+    setLoading(bool)
+  }
 
   return (
     <AuthContext.Provider value={{
@@ -30,7 +33,8 @@ export function AuthProvider(props) {
       setUserInfo:set_user_info,
       showLogin,
       setShowLogin:set_show_login,
-      loading
+      loading,
+      setLoading:set_loading
       }} >
         {props.children}
     </AuthContext.Provider>
